@@ -34,6 +34,9 @@ const nextConfig = {
     forceSwcTransforms: true,
   },
 };
+if (mode === "export") {
+  nextConfig.basePath = "/chat-next-web";
+}
 
 const CorsHeaders = [
   { key: "Access-Control-Allow-Credentials", value: "true" },
