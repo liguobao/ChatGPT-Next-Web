@@ -1,44 +1,31 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import "./styles/globals.scss";
 import "./styles/markdown.scss";
-import "./styles/prism.scss";
-import process from "child_process";
-import { ACCESS_CODES, IS_IN_DOCKER } from "./api/access";
+import "./styles/highlight.scss";
+import { getClientConfig } from "./config/client";
+import { type Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getServerSideConfig } from "./config/server";
+import { GoogleTagManager } from "@next/third-parties/google";
+const serverConfig = getServerSideConfig();
 
-let COMMIT_ID: string | undefined;
-try {
-  COMMIT_ID = process
-    .execSync("git rev-parse --short HEAD")
-    .toString()
-    .trim();
-} catch (e) {
-  console.error("No git or not from git repo.")
-}
-
-export const metadata = {
-  title: "ChatGPT Next Web",
+export const metadata: Metadata = {
+  title: "NextChat",
   description: "Your personal ChatGPT Chat Bot.",
-  appleWebApp: {
-    title: "ChatGPT Next Web",
-    statusBarStyle: "black-translucent",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
   },
-  themeColor: "#fafafa"
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#151515" },
+  ],
+  appleWebApp: {
+    title: "NextChat",
+    statusBarStyle: "default",
+  },
 };
-
-function Meta() {
-  const metas = {
-    version: COMMIT_ID ?? "unknown",
-    access: (ACCESS_CODES.size > 0 || IS_IN_DOCKER) ? "enabled" : "disabled",
-  };
-
-  return (
-    <>
-      {Object.entries(metas).map(([k, v]) => (
-        <meta name={k} content={v} key={k} />
-      ))}
-    </>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -48,21 +35,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-        />
-        <Meta />
+        <meta name="config" content={JSON.stringify(getClientConfig())} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="manifest" href="/site.webmanifest"></link>
-        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap"
-          rel="stylesheet"
-        ></link>
         <script src="/serviceWorkerRegister.js" defer></script>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {serverConfig?.isVercel && (
+          <>
+            <SpeedInsights />
+          </>
+        )}
+        {serverConfig?.gtmId && (
+          <>
+            <GoogleTagManager gtmId={serverConfig.gtmId} />
+          </>
+        )}
+      </body>
     </html>
   );
 }
