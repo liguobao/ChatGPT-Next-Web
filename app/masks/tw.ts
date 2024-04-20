@@ -221,7 +221,7 @@ export const TW_MASKS: BuiltinMask[] = [
       presence_penalty: 0,
       frequency_penalty: 0,
       sendMemory: false,
-      historyMessageCount: 0,
+      historyMessageCount: 32,
       compressMessageLengthThreshold: 1000,
     },
     lang: "tw",
