@@ -141,11 +141,13 @@ export class ChatGPTApi implements LLMApi {
 
     try {
       const chatPath = this.path(OpenaiPath.ChatPath);
+      var reqHeaders = getHeaders();
+      reqHeaders["x-model"] = modelConfig.model;
       const chatPayload = {
         method: "POST",
         body: JSON.stringify(requestPayload),
         signal: controller.signal,
-        headers: getHeaders(),
+        headers: reqHeaders,
       };
 
       // make a fetch request

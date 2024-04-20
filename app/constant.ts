@@ -143,33 +143,21 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   "gemini-pro-vision": "2023-12",
 };
 
-const openaiModels = [
-  "gpt-3.5-turbo",
-  "gpt-3.5-turbo-0301",
-  "gpt-3.5-turbo-0613",
-  "gpt-3.5-turbo-1106",
-  "gpt-3.5-turbo-0125",
-  "gpt-3.5-turbo-16k",
-  "gpt-3.5-turbo-16k-0613",
-  "gpt-4",
-  "gpt-4-0314",
-  "gpt-4-0613",
-  "gpt-4-1106-preview",
-  "gpt-4-0125-preview",
-  "gpt-4-32k",
-  "gpt-4-32k-0314",
-  "gpt-4-32k-0613",
-  "gpt-4-turbo",
-  "gpt-4-turbo-preview",
-  "gpt-4-vision-preview",
-  "gpt-4-turbo-2024-04-09",
-];
+export const ModelList = {
+  "gpt-3.5-turbo": "GPT-3.5-Turbo-16K",
+  "gpt-4": "GPT4-Turbo-128K",
+  dalle3: "GPT-DALL-E3-Image",
+  "gemini-pro": "Gemini-Pro",
+  "moonshot-v1-8k": "Moonshot-v1-8k",
+};
 
-const googleModels = [
-  "gemini-1.0-pro",
-  "gemini-1.5-pro-latest",
-  "gemini-pro-vision",
-];
+const openaiModels = ["gpt-3.5-turbo-16k", "gpt-4"];
+
+const imageModels = ["dalle3"];
+
+const googleModels = ["gemini-pro"];
+
+const moonshotModels = ["moonshot-v1-8k"];
 
 const anthropicModels = [
   "claude-instant-1.2",
@@ -199,13 +187,22 @@ export const DEFAULT_MODELS = [
       providerType: "google",
     },
   })),
-  ...anthropicModels.map((name) => ({
+  ...moonshotModels.map((name) => ({
     name,
     available: true,
     provider: {
-      id: "anthropic",
-      providerName: "Anthropic",
-      providerType: "anthropic",
+      id: "moonshot",
+      providerName: "Moonshot",
+      providerType: "moonshot",
+    },
+  })),
+  ...imageModels.map((name) => ({
+    name,
+    available: true,
+    provider: {
+      id: "image",
+      providerName: "Image",
+      providerType: "image",
     },
   })),
 ] as const;
