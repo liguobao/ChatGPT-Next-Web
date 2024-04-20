@@ -412,6 +412,9 @@ const en: LocaleType = {
   Plugin: {
     Name: "Plugin",
   },
+  Recharge: {
+    Name: "Recharge",
+  },
   FineTuned: {
     Sysmessage: "You are an assistant that",
   },
