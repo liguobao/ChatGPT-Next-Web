@@ -1,6 +1,11 @@
 export const OWNER = "Yidadaa";
 export const REPO = "ChatGPT-Next-Web";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
+export const GPT2077_Helper_URL = `https://zzqkhoj77w.feishu.cn/docx/Oj2TdG9pHoWCJhxgq0ycYTVqnMf`;
+export const GPT2077_Chat_URL = `https://chat.r2049.cn/chat`;
+export const GPT2077_ChatSession_URL = `https://chat.r2049.cn/chat-sessions`;
+export const GPT2077_Recharge_URL = `https://chat.r2049.cn/token-recharge`;
+
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
 export const UPDATE_URL = `${REPO_URL}#keep-updated`;
 export const RELEASE_URL = `${REPO_URL}/releases`;

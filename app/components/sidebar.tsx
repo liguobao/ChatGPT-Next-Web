@@ -19,6 +19,10 @@ import { useAppConfig, useChatStore } from "../store";
 
 import {
   DEFAULT_SIDEBAR_WIDTH,
+  GPT2077_ChatSession_URL,
+  GPT2077_Chat_URL,
+  GPT2077_Helper_URL,
+  GPT2077_Recharge_URL,
   MAX_SIDEBAR_WIDTH,
   MIN_SIDEBAR_WIDTH,
   NARROW_SIDEBAR_WIDTH,
@@ -158,7 +162,9 @@ export function SideBar(props: { className?: string }) {
           GPT 2077
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+          <a href={GPT2077_Helper_URL} target="_blank">
+            Build your own AI assistant.
+          </a>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -179,11 +185,20 @@ export function SideBar(props: { className?: string }) {
           }}
           shadow
         />
-        <IconButton
+        {/* <IconButton
           icon={<PluginIcon />}
           text={shouldNarrow ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => showToast(Locale.WIP)}
+          shadow
+        /> */}
+        <IconButton
+          icon={<PluginIcon />}
+          text={shouldNarrow ? undefined : Locale.Recharge.Name}
+          className={styles["sidebar-bar-button"]}
+          onClick={() => {
+            window.open(GPT2077_Recharge_URL, "_blank");
+          }}
           shadow
         />
       </div>
@@ -217,7 +232,11 @@ export function SideBar(props: { className?: string }) {
             </Link>
           </div>
           <div className={styles["sidebar-action"]}>
-            <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={GPT2077_ChatSession_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton icon={<GithubIcon />} shadow />
             </a>
           </div>
