@@ -8,6 +8,8 @@ import GithubIcon from "../icons/github.svg";
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
+import ChatIcon from "../icons/chat.svg";
+
 import DeleteIcon from "../icons/delete.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
@@ -162,7 +164,7 @@ export function SideBar(props: { className?: string }) {
           GPT 2077
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          <a href={GPT2077_Helper_URL} target="_blank">
+          <a href={GPT2077_ChatSession_URL} target="_blank">
             Build your own AI assistant.
           </a>
         </div>
@@ -237,7 +239,7 @@ export function SideBar(props: { className?: string }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton icon={<GithubIcon />} shadow />
+              <IconButton icon={<ChatIcon />} shadow />
             </a>
           </div>
         </div>
