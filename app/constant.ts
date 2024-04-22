@@ -155,7 +155,7 @@ const openaiModels = ["gpt-3.5-turbo-16k", "gpt-4"];
 
 const imageModels = ["dalle3"];
 
-const googleModels = ["gemini-pro"];
+const googleModels = ["Google-Gemini-Pro"];
 
 const moonshotModels = ["moonshot-v1-8k"];
 
@@ -182,9 +182,9 @@ export const DEFAULT_MODELS = [
     name,
     available: true,
     provider: {
-      id: "GP",
-      providerName: "GP",
-      providerType: "GP",
+      id: "GG",
+      providerName: "GG",
+      providerType: "GG",
     },
   })),
   ...moonshotModels.map((name) => ({
