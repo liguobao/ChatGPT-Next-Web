@@ -182,9 +182,9 @@ export const DEFAULT_MODELS = [
     name,
     available: true,
     provider: {
-      id: "google",
-      providerName: "Google",
-      providerType: "google",
+      id: "GP",
+      providerName: "GP",
+      providerType: "GP",
     },
   })),
   ...moonshotModels.map((name) => ({
@@ -201,8 +201,8 @@ export const DEFAULT_MODELS = [
     available: true,
     provider: {
       id: "image",
-      providerName: "Image",
-      providerType: "image",
+      providerName: "ImageModel",
+      providerType: "imageModel",
     },
   })),
 ] as const;
