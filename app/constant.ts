@@ -146,6 +146,8 @@ export const KnowledgeCutOffDate: Record<string, string> = {
 export const ModelList = {
   "gpt-3.5-turbo": "GPT-3.5-Turbo-16K",
   "gpt-4": "GPT4-Turbo-128K",
+  "gpt-4o": "GPT-4o",
+  "gpt-4o-2024-05-13": "GPT-4o-2024-05-13",
   dalle3: "GPT-DALL-E3-Image",
   "gemini-pro": "Gemini-Pro",
   "moonshot-v1-8k": "Moonshot-v1-8k",
